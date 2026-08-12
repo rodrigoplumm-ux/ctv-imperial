@@ -1,0 +1,106 @@
+import { Logo } from "./Logo";
+
+const columns = [
+  {
+    title: "Produto",
+    links: [
+      { label: "Experiência", href: "#experiencia" },
+      { label: "Catálogo", href: "#catalogo" },
+      { label: "Planos", href: "#planos" },
+      { label: "Dúvidas", href: "#duvidas" },
+    ],
+  },
+  {
+    title: "Assinatura",
+    links: [
+      { label: "Mensal · R$ 11,90", href: "#planos" },
+      { label: "Trimestral · R$ 29,90", href: "#planos" },
+      { label: "Anual · R$ 99,90", href: "#planos" },
+      { label: "Ativar acesso", href: "#planos" },
+    ],
+  },
+  {
+    title: "Casa Imperial",
+    links: [
+      { label: "Suporte", href: "https://wa.me/5511999990000" },
+      { label: "Privacidade", href: "#privacidade" },
+      { label: "Termos", href: "#termos" },
+      { label: "Contato", href: "mailto:ola@ctvimperial.com" },
+    ],
+  },
+];
+
+export function Footer() {
+  return (
+    <footer className="border-t border-gold/10 bg-ink pb-24 lg:pb-0">
+      <div className="page grid gap-12 py-16 md:grid-cols-[1.2fr_2fr]">
+        <div>
+          <Logo />
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
+            O império do entretenimento: canais, filmes, séries e esportes numa experiência só. Feito para a sua sala —
+            e para cada tela da casa.
+          </p>
+          <div className="mt-6 flex gap-3">
+            <a
+              href="https://instagram.com"
+              aria-label="Instagram da CTV Imperial"
+              className="grid h-10 w-10 place-items-center rounded-full border border-gold/20 text-mist transition-colors hover:text-gold"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7">
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+              </svg>
+            </a>
+            <a
+              href="https://youtube.com"
+              aria-label="YouTube da CTV Imperial"
+              className="grid h-10 w-10 place-items-center rounded-full border border-gold/20 text-mist transition-colors hover:text-gold"
+            >
+              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+                <path d="M22.5 7.2a3.2 3.2 0 0 0-2.2-2.3C18.4 4.5 12 4.5 12 4.5s-6.4 0-8.3.4A3.2 3.2 0 0 0 1.5 7.2 33 33 0 0 0 1.1 12a33 33 0 0 0 .4 4.8 3.2 3.2 0 0 0 2.2 2.3c1.9.4 8.3.4 8.3.4s6.4 0 8.3-.4a3.2 3.2 0 0 0 2.2-2.3 33 33 0 0 0 .4-4.8 33 33 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+          {columns.map((column) => (
+            <div key={column.title}>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">{column.title}</p>
+              <ul className="mt-4 space-y-2.5">
+                {column.links.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href} className="text-sm text-mist transition-colors hover:text-ivory">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="page flex flex-col gap-2 border-t border-white/5 py-6 text-xs text-dim sm:flex-row sm:items-center sm:justify-between">
+        <p>© {new Date().getFullYear()} CTV Imperial. Todos os direitos reservados.</p>
+        <p>Entretenimento premium · Brasil</p>
+      </div>
+
+      <div id="privacidade" className="page scroll-mt-24 border-t border-white/5 py-8 text-xs leading-relaxed text-dim">
+        <h2 className="text-sm font-semibold text-mist">Privacidade</h2>
+        <p className="mt-2 max-w-3xl">
+          Usamos seus dados apenas para ativar a assinatura, enviar o acesso e oferecer suporte. Não vendemos
+          informações e você pode solicitar a exclusão da conta a qualquer momento pelo WhatsApp ou e-mail.
+        </p>
+      </div>
+      <div id="termos" className="page scroll-mt-24 border-t border-white/5 py-8 text-xs leading-relaxed text-dim">
+        <h2 className="text-sm font-semibold text-mist">Termos</h2>
+        <p className="mt-2 max-w-3xl">
+          A assinatura é pessoal, sem fidelidade, e pode ser cancelada quando você quiser. O conteúdo disponível pode
+          variar conforme direitos e atualizações de catálogo. O serviço depende de conexão estável com a internet.
+        </p>
+      </div>
+    </footer>
+  );
+}

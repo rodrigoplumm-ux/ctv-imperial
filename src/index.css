@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, "Times New Roman", serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-ink: #060606;
+  --color-ink-2: #0b0b0d;
+  --color-ink-3: #121214;
+  --color-ink-4: #1a1a1e;
+  --color-gold: #d4af37;
+  --color-gold-2: #f3e0a0;
+  --color-gold-3: #9a7820;
+  --color-gold-4: #6e5614;
+  --color-ivory: #f5f0e6;
+  --color-mist: #b8b2a6;
+  --color-dim: #7c766c;
+  --color-line: rgba(212, 175, 55, 0.16);
+
+  --shadow-glow: 0 0 80px rgba(212, 175, 55, 0.18);
+  --shadow-lift: 0 30px 80px rgba(0, 0, 0, 0.45);
+
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-float-slow: float 14s ease-in-out infinite;
+  --animate-shimmer: shimmer 5s linear infinite;
+  --animate-marquee: marquee 42s linear infinite;
+  --animate-pulse-gold: pulse-gold 3.2s ease-in-out infinite;
+  --animate-kenburns: kenburns 28s ease-out infinite alternate;
+  --animate-spin-slow: spin 22s linear infinite;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-ink font-sans text-ivory antialiased;
+    background-image:
+      radial-gradient(1200px 600px at 80% -10%, rgba(212, 175, 55, 0.08), transparent 50%),
+      radial-gradient(900px 500px at -10% 20%, rgba(212, 175, 55, 0.04), transparent 45%);
+  }
+
+  ::selection {
+    background: rgba(212, 175, 55, 0.28);
+    color: #fff8e7;
+  }
+
+  :focus-visible {
+    outline: 2px solid #d4af37;
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  .gold-text {
+    background: linear-gradient(120deg, #fff4c8 0%, #d4af37 38%, #8a6a18 52%, #f6e7b0 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gold-text-static {
+    background: linear-gradient(180deg, #f8ecc0 0%, #d4af37 55%, #b8912a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: rgba(10, 10, 12, 0.62);
+    backdrop-filter: blur(22px) saturate(150%);
+    -webkit-backdrop-filter: blur(22px) saturate(150%);
+    border: 1px solid rgba(212, 175, 55, 0.14);
+  }
+
+  .glass-strong {
+    background: rgba(12, 12, 14, 0.78);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  .hairline {
+    border: 1px solid rgba(212, 175, 55, 0.14);
+  }
+
+  .page {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .section-pad {
+    @apply py-20 sm:py-28 lg:py-32;
+  }
+
+  .grain {
+    pointer-events: none;
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    opacity: 0.045;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .vignette {
+    background: radial-gradient(ellipse at center, transparent 40%, rgba(6, 6, 6, 0.72) 100%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-18px) translateX(8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-gold {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.35), 0 12px 40px rgba(212, 175, 55, 0.12);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(212, 175, 55, 0), 0 16px 50px rgba(212, 175, 55, 0.22);
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.14) translate3d(-1.5%, 1%, 0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
