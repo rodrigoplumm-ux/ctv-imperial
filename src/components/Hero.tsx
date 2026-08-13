@@ -41,7 +41,7 @@ export function Hero() {
           >
             <Sparkles className="h-3.5 w-3.5 text-gold" />
             <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-gold-2">
-              Ativação imediata · 4K HDR
+              Ativação rápida · 4K HDR
             </span>
           </motion.div>
 
@@ -82,6 +82,7 @@ export function Hero() {
             >
               Começar por R$ 11,90
             </button>
+
             <a
               href="#planos"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-7 py-3.5 text-sm font-semibold text-ivory backdrop-blur-md transition-colors hover:border-gold/40 hover:bg-white/8"
@@ -100,12 +101,14 @@ export function Hero() {
           >
             <li className="inline-flex items-center gap-2">
               <Zap className="h-4 w-4 text-gold" />
-              Ativação em 2 minutos
+              Ativação no horário de atendimento
             </li>
+
             <li className="inline-flex items-center gap-2">
               <ShieldCheck className="h-4 w-4 text-gold" />
               Sem fidelidade
             </li>
+
             <li className="inline-flex items-center gap-2">
               <span className="grid h-4 w-4 place-items-center rounded-full border border-gold/50 text-[9px] font-bold text-gold">
                 PIX
@@ -122,6 +125,7 @@ export function Hero() {
           className="relative"
         >
           <div className="absolute -inset-8 rounded-[2.5rem] bg-gold/10 blur-3xl" />
+
           <div className="relative overflow-hidden rounded-[1.6rem] border border-gold/20 bg-ink-3 p-1.5 shadow-[0_40px_80px_rgba(0,0,0,0.55)] sm:rounded-[2rem] sm:p-2">
             <img
               src="/images/streaming-ui.jpg"
@@ -138,7 +142,9 @@ export function Hero() {
             className="glass absolute -left-2 bottom-10 hidden max-w-[200px] rounded-2xl p-4 sm:block lg:-left-10"
           >
             <p className="font-display text-3xl text-gold-2">4K</p>
-            <p className="mt-1 text-xs leading-relaxed text-mist">Imagem de cinema na sua sala, no celular e no tablet.</p>
+            <p className="mt-1 text-xs leading-relaxed text-mist">
+              Imagem de cinema na sua sala, no celular e no tablet.
+            </p>
           </motion.div>
 
           <motion.div
@@ -147,8 +153,12 @@ export function Hero() {
             transition={{ delay: 1.05, duration: 0.7 }}
             className="glass absolute -right-1 top-8 hidden rounded-2xl p-4 sm:block lg:-right-6"
           >
-            <p className="text-[11px] uppercase tracking-[0.22em] text-gold">Ao vivo agora</p>
-            <p className="mt-1 text-sm font-medium text-ivory">Futebol · Cinema · Séries</p>
+            <p className="text-[11px] uppercase tracking-[0.22em] text-gold">
+              Ao vivo agora
+            </p>
+            <p className="mt-1 text-sm font-medium text-ivory">
+              Futebol · Cinema · Séries
+            </p>
           </motion.div>
         </motion.div>
       </div>
