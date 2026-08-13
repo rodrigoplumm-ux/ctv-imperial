@@ -22,10 +22,17 @@ const columns = [
   {
     title: "Casa Imperial",
     links: [
-      { label: "Suporte", href: "https://wa.me/5511999990000" },
+      {
+        label: "Suporte",
+        href: "https://wa.me/5524992000601?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20CTV%20Imperial%20e%20preciso%20de%20ajuda.",
+        external: true,
+      },
       { label: "Privacidade", href: "#privacidade" },
       { label: "Termos", href: "#termos" },
-      { label: "Contato", href: "mailto:ola@ctvimperial.com" },
+      {
+        label: "Contato",
+        href: "mailto:ctvimperial1@gmail.com",
+      },
     ],
   },
 ];
@@ -45,7 +52,9 @@ export function Footer() {
 
           <div className="mt-6 flex gap-3">
             <a
-              href="https://instagram.com"
+              href="https://instagram.com/ctv.imperial"
+              target="_blank"
+              rel="noreferrer"
               aria-label="Instagram da CTV Imperial"
               className="grid h-10 w-10 place-items-center rounded-full border border-gold/20 text-mist transition-colors hover:text-gold"
             >
@@ -67,20 +76,6 @@ export function Footer() {
                 />
               </svg>
             </a>
-
-            <a
-              href="https://youtube.com"
-              aria-label="YouTube da CTV Imperial"
-              className="grid h-10 w-10 place-items-center rounded-full border border-gold/20 text-mist transition-colors hover:text-gold"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="h-4 w-4"
-                fill="currentColor"
-              >
-                <path d="M22.5 7.2a3.2 3.2 0 0 0-2.2-2.3C18.4 4.5 12 4.5 12 4.5s-6.4 0-8.3.4A3.2 3.2 0 0 0 1.5 7.2 33 33 0 0 0 1.1 12a33 33 0 0 0 .4 4.8 3.2 3.2 0 0 0 2.2 2.3c1.9.4 8.3.4 8.3.4s6.4 0 8.3-.4a3.2 3.2 0 0 0 2.2-2.3 33 33 0 0 0 .4-4.8 33 33 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" />
-              </svg>
-            </a>
           </div>
         </div>
 
@@ -96,6 +91,12 @@ export function Footer() {
                   <li key={link.label}>
                     <a
                       href={link.href}
+                      {...("external" in link && link.external
+                        ? {
+                            target: "_blank",
+                            rel: "noreferrer",
+                          }
+                        : {})}
                       className="text-sm text-mist transition-colors hover:text-ivory"
                     >
                       {link.label}
