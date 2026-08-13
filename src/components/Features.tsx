@@ -51,14 +51,14 @@ export function Features() {
             kicker="A experiência"
             title={
               <>
-                Feito para quem exige
+                Muito mais do que assistir.
                 <span className="italic gold-text-static">
                   {" "}
-                  mais do que uma grade.
+                  Uma experiência completa.
                 </span>
               </>
             }
-            subtitle="CTV Imperial reúne o que você já ama — e entrega com o acabamento de um serviço premium."
+            subtitle="CTV Imperial reúne canais, filmes, séries e esportes em uma experiência simples, completa e feita para você."
           />
         </Reveal>
 
