@@ -8,7 +8,7 @@ import { cn } from "../utils/cn";
 const faqs = [
   {
     q: "Como funciona a ativação?",
-    a: "Depois da confirmação do pagamento, você recebe as orientações para começar a usar o serviço. As ativações são realizadas durante o nosso horário de atendimento, todos os dias, das 7h às 22h.",
+    a: "Depois da confirmação do pagamento, você recebe as orientações para começar a usar o serviço. O processo é simples e você conta com nosso suporte caso precise de ajuda.",
   },
   {
     q: "Em quais aparelhos posso assistir?",
@@ -62,7 +62,7 @@ export function FAQ() {
                 </span>
               </>
             }
-            subtitle="Transparência faz parte do serviço. Se ainda restar alguma dúvida, nosso atendimento está à disposição todos os dias."
+            subtitle="Tudo o que você precisa saber antes de assinar. E se ainda restar alguma dúvida, nosso atendimento está à disposição."
           />
         </Reveal>
 
