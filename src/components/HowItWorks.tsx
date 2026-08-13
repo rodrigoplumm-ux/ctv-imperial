@@ -7,7 +7,7 @@ const steps = [
     n: "01",
     icon: CreditCard,
     title: "Escolha o plano",
-    text: "Mensal para flexibilidade, trimestral para o meio-termo, anual para o melhor assento — e o menor valor.",
+    text: "Escolha entre mensal, trimestral ou anual e encontre o plano que combina melhor com você.",
   },
   {
     n: "02",
