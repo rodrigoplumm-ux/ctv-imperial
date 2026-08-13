@@ -12,19 +12,30 @@ export function FinalCTA() {
         alt=""
         className="absolute inset-0 h-full w-full scale-110 object-cover opacity-35"
       />
+
       <div className="absolute inset-0 bg-gradient-to-b from-ink via-ink/80 to-ink" />
+
       <div className="pointer-events-none absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/20 blur-[120px]" />
 
       <div className="page relative z-10 text-center">
         <Reveal>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-gold">O próximo episódio começa agora</p>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.34em] text-gold">
+            O próximo episódio começa agora
+          </p>
+
           <h2 className="mx-auto mt-5 max-w-3xl font-display text-4xl leading-[1.05] text-ivory sm:text-6xl">
             Entre no império.
-            <span className="italic gold-text-static"> Leve o entretenimento inteiro com você.</span>
+            <span className="italic gold-text-static">
+              {" "}
+              Leve o entretenimento inteiro com você.
+            </span>
           </h2>
+
           <p className="mx-auto mt-5 max-w-xl text-base text-mist sm:text-lg">
-            Canais, filmes, séries e esportes em 4K. Sem fidelidade. Sem espera. A partir de R$ 11,90.
+            Canais, filmes, séries e esportes em até 4K HDR. Sem fidelidade.
+            A partir de R$ 11,90.
           </p>
+
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <button
               type="button"
@@ -34,6 +45,7 @@ export function FinalCTA() {
               Assinar o plano anual
               <ArrowRight size={16} />
             </button>
+
             <a
               href="https://wa.me/5511999990000?text=Ol%C3%A1!%20Quero%20assinar%20o%20CTV%20Imperial."
               target="_blank"
