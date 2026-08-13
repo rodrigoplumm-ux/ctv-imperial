@@ -16,7 +16,7 @@ const columns = [
       { label: "Mensal · R$ 11,90", href: "#planos" },
       { label: "Trimestral · R$ 29,90", href: "#planos" },
       { label: "Anual · R$ 99,90", href: "#planos" },
-      { label: "Ativar acesso", href: "#planos" },
+      { label: "Assinar agora", href: "#planos" },
     ],
   },
   {
