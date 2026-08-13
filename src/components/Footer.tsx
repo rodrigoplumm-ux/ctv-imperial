@@ -36,28 +36,48 @@ export function Footer() {
       <div className="page grid gap-12 py-16 md:grid-cols-[1.2fr_2fr]">
         <div>
           <Logo />
+
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
-            O império do entretenimento: canais, filmes, séries e esportes numa experiência só. Feito para a sua sala —
-            e para cada tela da casa.
+            O império do entretenimento: canais, filmes, séries e esportes em
+            uma experiência só. Feito para acompanhar você nos seus momentos
+            de diversão.
           </p>
+
           <div className="mt-6 flex gap-3">
             <a
               href="https://instagram.com"
               aria-label="Instagram da CTV Imperial"
               className="grid h-10 w-10 place-items-center rounded-full border border-gold/20 text-mist transition-colors hover:text-gold"
             >
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.7">
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.7"
+              >
                 <rect x="3" y="3" width="18" height="18" rx="5" />
                 <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none" />
+                <circle
+                  cx="17.5"
+                  cy="6.5"
+                  r="0.8"
+                  fill="currentColor"
+                  stroke="none"
+                />
               </svg>
             </a>
+
             <a
               href="https://youtube.com"
               aria-label="YouTube da CTV Imperial"
               className="grid h-10 w-10 place-items-center rounded-full border border-gold/20 text-mist transition-colors hover:text-gold"
             >
-              <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+              <svg
+                viewBox="0 0 24 24"
+                className="h-4 w-4"
+                fill="currentColor"
+              >
                 <path d="M22.5 7.2a3.2 3.2 0 0 0-2.2-2.3C18.4 4.5 12 4.5 12 4.5s-6.4 0-8.3.4A3.2 3.2 0 0 0 1.5 7.2 33 33 0 0 0 1.1 12a33 33 0 0 0 .4 4.8 3.2 3.2 0 0 0 2.2 2.3c1.9.4 8.3.4 8.3.4s6.4 0 8.3-.4a3.2 3.2 0 0 0 2.2-2.3 33 33 0 0 0 .4-4.8 33 33 0 0 0-.4-4.8ZM10 15.5v-7l6 3.5-6 3.5Z" />
               </svg>
             </a>
@@ -67,11 +87,17 @@ export function Footer() {
         <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
           {columns.map((column) => (
             <div key={column.title}>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">{column.title}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.24em] text-gold">
+                {column.title}
+              </p>
+
               <ul className="mt-4 space-y-2.5">
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <a href={link.href} className="text-sm text-mist transition-colors hover:text-ivory">
+                    <a
+                      href={link.href}
+                      className="text-sm text-mist transition-colors hover:text-ivory"
+                    >
                       {link.label}
                     </a>
                   </li>
@@ -83,22 +109,37 @@ export function Footer() {
       </div>
 
       <div className="page flex flex-col gap-2 border-t border-white/5 py-6 text-xs text-dim sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} CTV Imperial. Todos os direitos reservados.</p>
+        <p>
+          © {new Date().getFullYear()} CTV Imperial. Todos os direitos reservados.
+        </p>
         <p>Entretenimento premium · Brasil</p>
       </div>
 
-      <div id="privacidade" className="page scroll-mt-24 border-t border-white/5 py-8 text-xs leading-relaxed text-dim">
+      <div
+        id="privacidade"
+        className="page scroll-mt-24 border-t border-white/5 py-8 text-xs leading-relaxed text-dim"
+      >
         <h2 className="text-sm font-semibold text-mist">Privacidade</h2>
+
         <p className="mt-2 max-w-3xl">
-          Usamos seus dados apenas para ativar a assinatura, enviar o acesso e oferecer suporte. Não vendemos
-          informações e você pode solicitar a exclusão da conta a qualquer momento pelo WhatsApp ou e-mail.
+          Os dados fornecidos pelo cliente são utilizados para atendimento,
+          processamento da assinatura e suporte. Não comercializamos
+          informações pessoais. Solicitações relacionadas aos seus dados podem
+          ser feitas pelos nossos canais de atendimento.
         </p>
       </div>
-      <div id="termos" className="page scroll-mt-24 border-t border-white/5 py-8 text-xs leading-relaxed text-dim">
+
+      <div
+        id="termos"
+        className="page scroll-mt-24 border-t border-white/5 py-8 text-xs leading-relaxed text-dim"
+      >
         <h2 className="text-sm font-semibold text-mist">Termos</h2>
+
         <p className="mt-2 max-w-3xl">
-          A assinatura é pessoal, sem fidelidade, e pode ser cancelada quando você quiser. O conteúdo disponível pode
-          variar conforme direitos e atualizações de catálogo. O serviço depende de conexão estável com a internet.
+          A assinatura não possui fidelidade e pode deixar de ser renovada a
+          qualquer momento. O conteúdo disponível pode variar conforme
+          atualizações de catálogo e disponibilidade. O serviço depende de
+          conexão estável com a internet e de dispositivo compatível.
         </p>
       </div>
     </footer>
