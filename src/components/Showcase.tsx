@@ -9,16 +9,16 @@ const tabs = [
     id: "cinema",
     label: "Cinema",
     title: "A sessão começa quando você quiser.",
-    text: "De lançamentos a clássicos restaurados. Uma vitrine pensada como um cinema particular — com imagem nítida, som envolvente e zero comercial no meio do filme.",
+    text: "De lançamentos a grandes clássicos. Uma vitrine pensada para transformar qualquer noite em sessão de cinema, com conteúdos disponíveis em alta qualidade.",
     image: "/images/movie-night.jpg",
     alt: "Ambiente de home cinema com pipoca e televisão ao fundo",
-    meta: ["4K HDR", "Lançamentos", "Sem anúncios"],
+    meta: ["Até 4K HDR", "Lançamentos", "Cinema"],
   },
   {
     id: "esportes",
     label: "Esportes",
     title: "O estádio cabe na sua sala.",
-    text: "Acompanhe o jogo com a intensidade de quem está na arquibancada. Transmissões ao vivo, replays e os campeonatos que importam — do brasileiro às copas do mundo.",
+    text: "Acompanhe grandes momentos esportivos ao vivo, com futebol, automobilismo, lutas, basquete e muito mais.",
     image: "/images/sports-night.jpg",
     alt: "Televisão grande exibindo uma partida de futebol em estádio lotado",
     meta: ["Ao vivo", "Futebol", "F1 · UFC · NBA"],
@@ -26,17 +26,17 @@ const tabs = [
   {
     id: "series",
     label: "Séries",
-    title: "Maratonas com acabamento de série original.",
-    text: "Temporadas completas, dramas premiados e o próximo vício da casa. Continue de onde parou em qualquer tela, sem perder o fio — nem a qualidade.",
+    title: "Sempre tem mais um episódio esperando.",
+    text: "Temporadas, histórias envolventes e novas descobertas para quem gosta de acompanhar uma boa série do começo ao fim.",
     image: "/images/series-binge.jpg",
     alt: "Pessoa assistindo a uma série em uma sala sofisticada à noite",
-    meta: ["Temporadas completas", "Multi-tela", "Continue assistindo"],
+    meta: ["Séries", "Temporadas", "Novidades"],
   },
   {
     id: "telas",
     label: "Dispositivos",
-    title: "Um império em cada tela da casa.",
-    text: "Smart TV, celular, tablet ou notebook. A mesma experiência cinematográfica, sincronizada e estável — para a família inteira, cada um no seu ritmo.",
+    title: "Seu entretenimento nos seus dispositivos.",
+    text: "Smart TV, celular, tablet ou notebook. Escolha onde assistir e aproveite o CTV Imperial no dispositivo compatível que preferir.",
     image: "/images/devices.jpg",
     alt: "Notebook, tablet e celular exibindo o aplicativo CTV Imperial",
     meta: ["Smart TV", "iOS e Android", "Computador"],
@@ -59,12 +59,16 @@ export function Showcase() {
                 <span className="italic gold-text-static"> Uma assinatura.</span>
               </>
             }
-            subtitle="Escolha o que quer sentir hoje: a luz da sala de cinema, o grito do estádio ou o silêncio de mais um episódio."
+            subtitle="Escolha o que quer sentir hoje: a luz da sala de cinema, a emoção do esporte ou o silêncio de mais um episódio."
           />
         </Reveal>
 
         <Reveal delay={0.1} className="mt-12">
-          <div className="flex flex-wrap justify-center gap-2" role="tablist" aria-label="Categorias do catálogo">
+          <div
+            className="flex flex-wrap justify-center gap-2"
+            role="tablist"
+            aria-label="Categorias do catálogo"
+          >
             {tabs.map((tab) => (
               <button
                 key={tab.id}
@@ -99,6 +103,7 @@ export function Showcase() {
                 className="aspect-[16/11] w-full object-cover"
               />
             </AnimatePresence>
+
             <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
           </div>
 
@@ -110,12 +115,24 @@ export function Showcase() {
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 0.45 }}
             >
-              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold">{current.label}</p>
-              <h3 className="mt-3 font-display text-3xl leading-tight text-ivory sm:text-4xl">{current.title}</h3>
-              <p className="mt-4 text-base leading-relaxed text-mist">{current.text}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold">
+                {current.label}
+              </p>
+
+              <h3 className="mt-3 font-display text-3xl leading-tight text-ivory sm:text-4xl">
+                {current.title}
+              </h3>
+
+              <p className="mt-4 text-base leading-relaxed text-mist">
+                {current.text}
+              </p>
+
               <ul className="mt-6 flex flex-wrap gap-2">
                 {current.meta.map((item) => (
-                  <li key={item} className="rounded-full border border-gold/20 bg-gold/8 px-3 py-1 text-xs text-gold-2">
+                  <li
+                    key={item}
+                    className="rounded-full border border-gold/20 bg-gold/8 px-3 py-1 text-xs text-gold-2"
+                  >
                     {item}
                   </li>
                 ))}
