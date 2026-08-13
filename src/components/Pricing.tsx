@@ -17,30 +17,46 @@ export function Pricing() {
             title={
               <>
                 Três portas.
-                <span className="italic gold-text-static"> O mesmo império.</span>
+                <span className="italic gold-text-static">
+                  {" "}
+                  O mesmo império.
+                </span>
               </>
             }
             subtitle="Comece no mensal ou garanta o melhor valor no anual. Em qualquer escolha, você aproveita o catálogo completo."
           />
         </Reveal>
 
-        <Stagger className="mt-14 grid items-stretch gap-5 lg:grid-cols-3" delay={0.08}>
+        <Stagger
+          className="mt-14 grid items-stretch gap-5 lg:grid-cols-3"
+          delay={0.08}
+        >
           {plans.map((plan) => (
             <Item key={plan.id}>
-              <PlanCard planId={plan.id} onSelect={() => openCheckout(plan.id)} />
+              <PlanCard
+                planId={plan.id}
+                onSelect={() => openCheckout(plan.id)}
+              />
             </Item>
           ))}
         </Stagger>
 
         <p className="mt-8 text-center text-sm text-dim">
-          Pagamento via PIX ou cartão. Ativação rápida durante o horário de atendimento. Cancele quando quiser — sem multa.
+          Pagamento via PIX ou cartão. Ativação rápida durante o horário de
+          atendimento. Cancele quando quiser — sem multa.
         </p>
       </div>
     </section>
   );
 }
 
-function PlanCard({ planId, onSelect }: { planId: PlanId; onSelect: () => void }) {
+function PlanCard({
+  planId,
+  onSelect,
+}: {
+  planId: PlanId;
+  onSelect: () => void;
+}) {
   const plan = plans.find((item) => item.id === planId)!;
 
   return (
@@ -61,8 +77,13 @@ function PlanCard({ planId, onSelect }: { planId: PlanId; onSelect: () => void }
 
       <div className="flex items-start justify-between gap-3">
         <div>
-          <h3 className="font-display text-3xl text-ivory">{plan.name}</h3>
-          <p className="mt-1 text-sm text-mist">{plan.equivalent}</p>
+          <h3 className="font-display text-3xl text-ivory">
+            {plan.name}
+          </h3>
+
+          <p className="mt-1 text-sm text-mist">
+            {plan.equivalent}
+          </p>
         </div>
 
         {plan.save ? (
@@ -72,14 +93,24 @@ function PlanCard({ planId, onSelect }: { planId: PlanId; onSelect: () => void }
         ) : null}
       </div>
 
-      <p className="mt-6 flex items-end gap-1">
-        <span className="font-display text-5xl leading-none text-ivory">
-          {formatBRL(plan.price)}
+      <div className="mt-6 flex items-end gap-1.5">
+        <span className="text-[1.35rem] font-medium leading-none text-ivory">
+          R$
         </span>
-        <span className="mb-1 text-sm text-dim">{plan.cadence}</span>
-      </p>
 
-      <p className="mt-3 text-sm leading-relaxed text-mist">
+        <span className="text-[3rem] font-bold leading-[0.82] tracking-[-0.04em] text-ivory sm:text-[3.4rem]">
+          {plan.price.toLocaleString("pt-BR", {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2,
+          })}
+        </span>
+
+        <span className="mb-0.5 text-sm text-dim">
+          {plan.cadence}
+        </span>
+      </div>
+
+      <p className="mt-4 text-sm leading-relaxed text-mist">
         {plan.description}
       </p>
 
