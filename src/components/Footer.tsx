@@ -16,7 +16,7 @@ const columns = [
       { label: "Mensal · R$ 11,90", href: "#planos" },
       { label: "Trimestral · R$ 29,90", href: "#planos" },
       { label: "Anual · R$ 99,90", href: "#planos" },
-      { label: "Assinar agora", href: "#planos" },
+      { label: "Ver planos", href: "#planos" },
     ],
   },
   {
@@ -50,31 +50,35 @@ export function Footer() {
             de diversão.
           </p>
 
-          <div className="mt-6 flex gap-3">
+          <div className="mt-6">
             <a
               href="https://instagram.com/ctv.imperial"
               target="_blank"
               rel="noreferrer"
               aria-label="Instagram da CTV Imperial"
-              className="grid h-10 w-10 place-items-center rounded-full border border-gold/20 text-mist transition-colors hover:text-gold"
+              className="inline-flex items-center gap-2 rounded-full border border-gold/20 px-3 py-2 text-mist transition-colors hover:border-gold/40 hover:text-gold"
             >
-              <svg
-                viewBox="0 0 24 24"
-                className="h-4 w-4"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.7"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle
-                  cx="17.5"
-                  cy="6.5"
-                  r="0.8"
-                  fill="currentColor"
-                  stroke="none"
-                />
-              </svg>
+              <span className="grid h-7 w-7 place-items-center rounded-full">
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.7"
+                >
+                  <rect x="3" y="3" width="18" height="18" rx="5" />
+                  <circle cx="12" cy="12" r="4" />
+                  <circle
+                    cx="17.5"
+                    cy="6.5"
+                    r="0.8"
+                    fill="currentColor"
+                    stroke="none"
+                  />
+                </svg>
+              </span>
+
+              <span className="text-sm">@ctv.imperial</span>
             </a>
           </div>
         </div>
@@ -120,13 +124,22 @@ export function Footer() {
         id="privacidade"
         className="page scroll-mt-24 border-t border-white/5 py-8 text-xs leading-relaxed text-dim"
       >
-        <h2 className="text-sm font-semibold text-mist">Privacidade</h2>
+        <h2 className="text-sm font-semibold text-mist">
+          Privacidade
+        </h2>
 
         <p className="mt-2 max-w-3xl">
           Os dados fornecidos pelo cliente são utilizados para atendimento,
           processamento da assinatura e suporte. Não comercializamos
           informações pessoais. Solicitações relacionadas aos seus dados podem
-          ser feitas pelos nossos canais de atendimento.
+          ser feitas pelo e-mail{" "}
+          <a
+            href="mailto:ctvimperial1@gmail.com"
+            className="text-mist underline decoration-gold/40 underline-offset-2 transition-colors hover:text-ivory"
+          >
+            ctvimperial1@gmail.com
+          </a>{" "}
+          ou pelos nossos canais de atendimento.
         </p>
       </div>
 
@@ -134,7 +147,9 @@ export function Footer() {
         id="termos"
         className="page scroll-mt-24 border-t border-white/5 py-8 text-xs leading-relaxed text-dim"
       >
-        <h2 className="text-sm font-semibold text-mist">Termos</h2>
+        <h2 className="text-sm font-semibold text-mist">
+          Termos
+        </h2>
 
         <p className="mt-2 max-w-3xl">
           A assinatura não possui fidelidade e pode deixar de ser renovada a
