@@ -40,19 +40,33 @@ export function Navbar() {
       >
         Pular para o conteúdo
       </a>
+
       <div
         className={cn(
-          "mx-auto flex max-w-7xl items-center justify-between px-5 py-3 transition-all duration-500 sm:px-8",
-          scrolled ? "mt-2" : "mt-0",
+          "mx-auto flex max-w-7xl items-center justify-between transition-all duration-500 sm:px-8 lg:px-5 lg:py-3",
+          scrolled
+            ? "mt-1 px-3 py-1 lg:mt-2"
+            : "mt-0 px-5 py-3",
         )}
       >
         <div
           className={cn(
-            "flex w-full items-center justify-between rounded-full px-3 py-2.5 transition-all duration-500",
-            scrolled ? "glass-strong shadow-[0_10px_40px_rgba(0,0,0,0.35)]" : "bg-transparent",
+            "flex w-full items-center justify-between rounded-full transition-all duration-500",
+            scrolled
+              ? "glass-strong px-3 py-1.5 shadow-[0_10px_40px_rgba(0,0,0,0.35)] lg:px-3 lg:py-2.5"
+              : "bg-transparent px-3 py-2.5",
           )}
         >
-          <Logo />
+          <div
+            className={cn(
+              "origin-left transition-all duration-500",
+              scrolled
+                ? "scale-[0.82] -mr-8 sm:scale-90 sm:-mr-4 lg:mr-0 lg:scale-100"
+                : "scale-100",
+            )}
+          >
+            <Logo />
+          </div>
 
           <nav className="hidden items-center gap-8 lg:flex" aria-label="Principal">
             {links.map((link) => (
@@ -67,7 +81,10 @@ export function Navbar() {
           </nav>
 
           <div className="hidden items-center gap-3 lg:flex">
-            <span className="pr-2 text-[12px] text-dim">A partir de R$ 11,90</span>
+            <span className="pr-2 text-[12px] text-dim">
+              A partir de R$ 11,90
+            </span>
+
             <button
               type="button"
               onClick={() => openCheckout("anual")}
@@ -79,13 +96,20 @@ export function Navbar() {
 
           <button
             type="button"
-            className="grid h-11 w-11 place-items-center rounded-full hairline text-ivory lg:hidden"
+            className={cn(
+              "grid place-items-center rounded-full hairline text-ivory transition-all duration-500 lg:hidden",
+              scrolled ? "h-9 w-9" : "h-11 w-11",
+            )}
             aria-expanded={open}
             aria-controls="menu-mobile"
             aria-label={open ? "Fechar menu" : "Abrir menu"}
             onClick={() => setOpen((v) => !v)}
           >
-            {open ? <X size={18} /> : <Menu size={18} />}
+            {open ? (
+              <X size={scrolled ? 16 : 18} />
+            ) : (
+              <Menu size={scrolled ? 16 : 18} />
+            )}
           </button>
         </div>
       </div>
@@ -115,6 +139,7 @@ export function Navbar() {
                   </motion.a>
                 ))}
               </nav>
+
               <button
                 type="button"
                 onClick={() => {
