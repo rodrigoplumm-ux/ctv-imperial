@@ -32,8 +32,8 @@ const features = [
   },
   {
     icon: Ban,
-    title: "Sem anúncios extras, sem fidelidade",
-    text: "O CTV Imperial não adiciona comerciais à sua experiência. E você continua pelo tempo que quiser.",
+    title: "Sem fidelidade",
+    text: "Assine pelo período que preferir e continue somente enquanto fizer sentido para você.",
   },
   {
     icon: Headphones,
