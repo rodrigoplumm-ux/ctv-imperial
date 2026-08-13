@@ -7,7 +7,11 @@ const fade = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.12 + i * 0.1, duration: 0.85, ease: [0.22, 1, 0.36, 1] as const },
+    transition: {
+      delay: 0.12 + i * 0.1,
+      duration: 0.85,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
   }),
 };
 
@@ -15,7 +19,10 @@ export function Hero() {
   const { openCheckout } = useCheckout();
 
   return (
-    <section id="topo" className="relative isolate min-h-[100svh] overflow-hidden pt-28">
+    <section
+      id="topo"
+      className="relative isolate min-h-[100svh] overflow-hidden pt-28"
+    >
       <div className="absolute inset-0">
         <img
           src="/images/hero-cinema.jpg"
@@ -53,7 +60,9 @@ export function Hero() {
             className="max-w-xl font-display text-[3.1rem] font-medium leading-[0.95] text-ivory sm:text-6xl lg:text-[4.6rem]"
           >
             Todo o entretenimento.
-            <span className="mt-2 block italic gold-text animate-shimmer">Um só império.</span>
+            <span className="mt-2 block italic gold-text animate-shimmer">
+              Um só império.
+            </span>
           </motion.h1>
 
           <motion.p
@@ -63,8 +72,9 @@ export function Hero() {
             animate="visible"
             className="mt-6 max-w-lg text-base leading-relaxed text-mist sm:text-lg"
           >
-            Canais ao vivo, lançamentos de cinema, séries completas e os maiores eventos esportivos —
-            numa experiência cinematográfica. Sem contrato. Sem anúncios. A partir de{" "}
+            Canais ao vivo, lançamentos de cinema, séries completas e os maiores
+            eventos esportivos — numa experiência cinematográfica. Sem contrato.
+            Sem anúncios. A partir de{" "}
             <strong className="font-semibold text-ivory">R$ 11,90</strong>.
           </motion.p>
 
@@ -77,7 +87,7 @@ export function Hero() {
           >
             <button
               type="button"
-              onClick={() => openCheckout("anual")}
+              onClick={() => openCheckout("mensal")}
               className="animate-pulse-gold inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-gold-2 via-gold to-gold-3 px-7 py-3.5 text-sm font-semibold text-ink transition-transform duration-300 hover:scale-[1.03]"
             >
               Começar por R$ 11,90
@@ -121,7 +131,11 @@ export function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 40, scale: 0.96 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.35, duration: 1, ease: [0.22, 1, 0.36, 1] }}
+          transition={{
+            delay: 0.35,
+            duration: 1,
+            ease: [0.22, 1, 0.36, 1],
+          }}
           className="relative"
         >
           <div className="absolute -inset-8 rounded-[2.5rem] bg-gold/10 blur-3xl" />
