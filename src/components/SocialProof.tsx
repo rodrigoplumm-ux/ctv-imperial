@@ -3,7 +3,7 @@ import { Reveal } from "./Reveal";
 const stats = [
   { value: "3.000+", label: "clientes atendidos" },
   { value: "4K HDR", label: "qualidade disponível" },
-  { value: "Diárias", label: "atualizações de conteúdo" },
+  { value: "Sempre novo", label: "catálogo atualizado regularmente" },
   { value: "7h–22h", label: "suporte todos os dias" },
 ];
 
@@ -24,12 +24,20 @@ const ribbon = [
 
 export function SocialProof() {
   return (
-    <section aria-label="Destaques" className="relative border-y border-gold/10 bg-ink-2/80">
+    <section
+      aria-label="Destaques"
+      className="relative border-y border-gold/10 bg-ink-2/80"
+    >
       <div className="page grid grid-cols-2 gap-8 py-12 md:grid-cols-4 md:py-16">
         {stats.map((stat, index) => (
           <Reveal key={stat.label} delay={index * 0.08} y={18}>
-            <p className="font-display text-3xl text-ivory sm:text-4xl">{stat.value}</p>
-            <p className="mt-1 text-sm text-dim">{stat.label}</p>
+            <p className="font-display text-3xl text-ivory sm:text-4xl">
+              {stat.value}
+            </p>
+
+            <p className="mt-1 text-sm text-dim">
+              {stat.label}
+            </p>
           </Reveal>
         ))}
       </div>
