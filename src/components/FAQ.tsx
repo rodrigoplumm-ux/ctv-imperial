@@ -8,35 +8,35 @@ import { cn } from "../utils/cn";
 const faqs = [
   {
     q: "Como funciona a ativação?",
-    a: "Depois da confirmação do pagamento — PIX cai na hora — você recebe o acesso no e-mail e no WhatsApp. Em cerca de dois minutos já está assistindo na TV, no celular ou no computador.",
+    a: "Depois da confirmação do pagamento, você recebe as orientações para começar a usar o serviço. As ativações são realizadas durante o nosso horário de atendimento, todos os dias, das 7h às 22h.",
   },
   {
     q: "Em quais aparelhos posso assistir?",
-    a: "Smart TVs (Samsung, LG, Android TV, TCL e similares), celulares e tablets iOS e Android, computadores e TV Box. Se a tela tem internet, o Imperial entra.",
+    a: "O serviço é compatível com diversos dispositivos, como Smart TVs, celulares e tablets iOS e Android, computadores e TV Box. Se tiver dúvida sobre o seu aparelho, fale com nosso atendimento antes de assinar.",
   },
   {
     q: "Preciso de uma internet rápida?",
-    a: "Para HD, uma conexão estável de 10 Mbps já é confortável. Para 4K, recomendamos 25 Mbps ou mais. A maioria das bandas largas residenciais no Brasil dá conta.",
+    a: "É importante ter uma conexão estável. Conteúdos em alta definição exigem uma boa conexão e, para aproveitar a qualidade 4K, uma velocidade maior é recomendada.",
   },
   {
     q: "Posso cancelar quando quiser?",
-    a: "Sim. Não há fidelidade nem multa. Você usa enquanto fizer sentido — e encerra com um toque, sem negociar com atendente.",
+    a: "Sim. Não há fidelidade nem multa. Você pode simplesmente deixar de renovar o serviço quando não quiser mais continuar.",
   },
   {
     q: "Os filmes, séries e canais são atualizados?",
-    a: "Sempre. Novos títulos, rodadas de campeonato e estreias entram no catálogo continuamente. Você não precisa fazer nada: o império cresce sozinho.",
+    a: "Sim. O conteúdo recebe atualizações diariamente, com novidades em filmes, séries, entretenimento e programação.",
   },
   {
-    q: "Quantas telas ao mesmo tempo?",
-    a: "Mensal: 2 telas. Trimestral: 3 telas. Anual: 4 telas. Ideal para a casa toda sem guerra pelo controle.",
+    q: "Qual é o horário de atendimento?",
+    a: "Nosso suporte funciona todos os dias, das 7h às 22h. No plano anual, o atendimento possui prioridade dentro desse mesmo horário.",
   },
   {
     q: "Como é o pagamento?",
-    a: "PIX (liberação imediata) ou cartão de crédito. Os valores são os que você vê nesta página: R$ 11,90, R$ 29,90 e R$ 99,90. Sem taxa escondida.",
+    a: "Você pode pagar via PIX ou cartão. Os valores são os apresentados nesta página: R$ 11,90 no mensal, R$ 29,90 no trimestral e R$ 99,90 no anual.",
   },
   {
     q: "E se eu tiver algum problema?",
-    a: "O suporte imperial funciona todos os dias, inclusive fins de semana e feriados de jogo. WhatsApp humano, sem robô te enrolando no primeiro tempo.",
+    a: "É só chamar nosso atendimento. O suporte funciona todos os dias, das 7h às 22h, para ajudar com dúvidas de acesso, configuração e utilização do serviço.",
   },
 ];
 
@@ -44,7 +44,10 @@ export function FAQ() {
   const [open, setOpen] = useState<number>(0);
 
   return (
-    <section id="duvidas" className="section-pad relative scroll-mt-24 bg-ink-2/40">
+    <section
+      id="duvidas"
+      className="section-pad relative scroll-mt-24 bg-ink-2/40"
+    >
       <div className="page grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
         <Reveal>
           <SectionHeading
@@ -53,10 +56,13 @@ export function FAQ() {
             title={
               <>
                 Perguntas que a gente
-                <span className="italic gold-text-static"> já esperava.</span>
+                <span className="italic gold-text-static">
+                  {" "}
+                  já esperava.
+                </span>
               </>
             }
-            subtitle="Transparência faz parte do serviço. Se ainda restar alguma dúvida, o suporte responde em minutos."
+            subtitle="Transparência faz parte do serviço. Se ainda restar alguma dúvida, nosso atendimento está à disposição todos os dias."
           />
         </Reveal>
 
@@ -67,7 +73,9 @@ export function FAQ() {
                 key={item.q}
                 item={item}
                 isOpen={open === index}
-                onToggle={() => setOpen((current) => (current === index ? -1 : index))}
+                onToggle={() =>
+                  setOpen((current) => (current === index ? -1 : index))
+                }
               />
             ))}
           </div>
@@ -100,7 +108,10 @@ function AccordionItem({
           onClick={onToggle}
           className="flex w-full items-center justify-between gap-4 py-5 text-left"
         >
-          <span className="text-[15px] font-semibold text-ivory sm:text-base">{item.q}</span>
+          <span className="text-[15px] font-semibold text-ivory sm:text-base">
+            {item.q}
+          </span>
+
           <span
             className={cn(
               "grid h-8 w-8 shrink-0 place-items-center rounded-full border border-gold/20 text-gold transition-transform duration-300",
@@ -111,6 +122,7 @@ function AccordionItem({
           </span>
         </button>
       </h3>
+
       <AnimatePresence initial={false}>
         {isOpen ? (
           <motion.div
@@ -120,10 +132,15 @@ function AccordionItem({
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+            transition={{
+              duration: 0.35,
+              ease: [0.22, 1, 0.36, 1],
+            }}
             className="overflow-hidden"
           >
-            <p className="pb-5 pr-10 text-sm leading-relaxed text-mist">{item.a}</p>
+            <p className="pb-5 pr-10 text-sm leading-relaxed text-mist">
+              {item.a}
+            </p>
           </motion.div>
         ) : null}
       </AnimatePresence>
