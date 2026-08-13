@@ -21,12 +21,15 @@ export function Navbar() {
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 16);
     onScroll();
+
     window.addEventListener("scroll", onScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
+
     return () => {
       document.body.style.overflow = "";
     };
@@ -90,7 +93,7 @@ export function Navbar() {
 
             <button
               type="button"
-              onClick={() => openCheckout("anual")}
+              onClick={() => openCheckout("mensal")}
               className="rounded-full bg-gradient-to-r from-gold-2 via-gold to-gold-3 px-5 py-2.5 text-[13px] font-semibold text-ink shadow-[0_8px_24px_rgba(212,175,55,0.22)] transition-transform duration-300 hover:scale-[1.03]"
             >
               Assinar agora
@@ -127,7 +130,10 @@ export function Navbar() {
             className="fixed inset-0 z-40 bg-ink/90 backdrop-blur-xl lg:hidden"
           >
             <div className="flex h-full flex-col px-6 pt-24">
-              <nav className="flex flex-col gap-2" aria-label="Mobile">
+              <nav
+                className="flex flex-col gap-2"
+                aria-label="Mobile"
+              >
                 {links.map((link, index) => (
                   <motion.a
                     key={link.href}
@@ -147,7 +153,7 @@ export function Navbar() {
                 type="button"
                 onClick={() => {
                   setOpen(false);
-                  openCheckout("anual");
+                  openCheckout("mensal");
                 }}
                 className="mt-8 rounded-full bg-gradient-to-r from-gold-2 via-gold to-gold-3 px-6 py-4 text-sm font-semibold text-ink"
               >
