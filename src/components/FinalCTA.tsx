@@ -47,7 +47,7 @@ export function FinalCTA() {
             </button>
 
             <a
-              href="https://wa.me/5511999990000?text=Ol%C3%A1!%20Quero%20assinar%20o%20CTV%20Imperial."
+              href="https://wa.me/5524992000601?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20CTV%20Imperial%20e%20gostaria%20de%20tirar%20uma%20d%C3%BAvida."
               target="_blank"
               rel="noreferrer"
               className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-8 py-3.5 text-sm font-semibold text-ivory backdrop-blur-md hover:border-gold/40"
