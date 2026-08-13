@@ -20,7 +20,7 @@ export function Pricing() {
                 <span className="italic gold-text-static"> O mesmo império.</span>
               </>
             }
-            subtitle="Comece no mensal ou garanta o melhor valor no anual. Em qualquer escolha, o catálogo completo é seu no mesmo instante."
+            subtitle="Comece no mensal ou garanta o melhor valor no anual. Em qualquer escolha, você aproveita o catálogo completo."
           />
         </Reveal>
 
@@ -33,7 +33,7 @@ export function Pricing() {
         </Stagger>
 
         <p className="mt-8 text-center text-sm text-dim">
-          Pagamento via PIX ou cartão. Ativação imediata. Cancele quando quiser — sem multa.
+          Pagamento via PIX ou cartão. Ativação rápida durante o horário de atendimento. Cancele quando quiser — sem multa.
         </p>
       </div>
     </section>
@@ -64,6 +64,7 @@ function PlanCard({ planId, onSelect }: { planId: PlanId; onSelect: () => void }
           <h3 className="font-display text-3xl text-ivory">{plan.name}</h3>
           <p className="mt-1 text-sm text-mist">{plan.equivalent}</p>
         </div>
+
         {plan.save ? (
           <span className="rounded-full border border-gold/30 bg-gold/10 px-2.5 py-1 text-[11px] font-semibold text-gold-2">
             −{plan.save}
@@ -72,14 +73,22 @@ function PlanCard({ planId, onSelect }: { planId: PlanId; onSelect: () => void }
       </div>
 
       <p className="mt-6 flex items-end gap-1">
-        <span className="font-display text-5xl leading-none text-ivory">{formatBRL(plan.price)}</span>
+        <span className="font-display text-5xl leading-none text-ivory">
+          {formatBRL(plan.price)}
+        </span>
         <span className="mb-1 text-sm text-dim">{plan.cadence}</span>
       </p>
-      <p className="mt-3 text-sm leading-relaxed text-mist">{plan.description}</p>
+
+      <p className="mt-3 text-sm leading-relaxed text-mist">
+        {plan.description}
+      </p>
 
       <ul className="mt-6 flex-1 space-y-2.5">
         {plan.features.map((feature) => (
-          <li key={feature} className="flex items-start gap-2.5 text-sm text-ivory/90">
+          <li
+            key={feature}
+            className="flex items-start gap-2.5 text-sm text-ivory/90"
+          >
             <Check className="mt-0.5 h-4 w-4 shrink-0 text-gold" />
             {feature}
           </li>
