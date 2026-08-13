@@ -5,10 +5,10 @@ import { SectionHeading } from "./SectionHeading";
 const rows = [
   { label: "Preço mensal", cable: "R$ 150 ou mais", us: "A partir de R$ 11,90" },
   { label: "Fidelidade", cable: "12 meses de contrato", us: "Cancele quando quiser" },
-  { label: "Instalação", cable: "Técnico e taxa", us: "2 minutos, sozinho" },
+  { label: "Ativação", cable: "Instalação e agendamento", us: "Rápida e sem visita técnica" },
   { label: "Conteúdo", cable: "Grade fechada", us: "Canais + filmes + séries + esportes" },
-  { label: "Telas", cable: "Uma TV da sala", us: "Até 4 dispositivos" },
-  { label: "Anúncios", cable: "Intervalos longos", us: "Zero comerciais" },
+  { label: "Onde assistir", cable: "Foco na TV da sala", us: "TV, celular, tablet e computador" },
+  { label: "Experiência", cable: "Modelo tradicional", us: "Sem anúncios inseridos pelo Imperial" },
 ];
 
 const perks = [
@@ -18,11 +18,11 @@ const perks = [
   },
   {
     title: "Economia que se vê",
-    text: "No plano anual você assiste o ano inteiro por menos do que um mês de TV por assinatura tradicional.",
+    text: "No plano anual você assiste o ano inteiro por menos do que um mês de muitas opções de TV por assinatura tradicional.",
   },
   {
     title: "Qualidade de cinema",
-    text: "Imagem em até 4K HDR e transmissão estável. A sala muda. A sensação também.",
+    text: "Conteúdos disponíveis em até 4K HDR, para aproveitar uma experiência de imagem de alto nível na sua tela.",
   },
 ];
 
@@ -41,7 +41,7 @@ export function Benefits() {
                   <span className="italic gold-text-static"> Mais espetáculo.</span>
                 </>
               }
-              subtitle="A TV antiga cobra caro por uma grade que você mal usa. O Imperial entrega o que importa — por uma fração do valor."
+              subtitle="A TV tradicional pode custar caro por uma grade que você nem sempre aproveita. O Imperial reúne o entretenimento que importa por muito menos."
             />
           </Reveal>
 
@@ -64,16 +64,19 @@ export function Benefits() {
               <span className="text-dim">TV tradicional</span>
               <span className="text-gold">CTV Imperial</span>
             </div>
+
             {rows.map((row) => (
               <div
                 key={row.label}
                 className="grid grid-cols-[1.1fr_1fr_1.15fr] items-center border-b border-white/5 px-4 py-4 last:border-0 sm:px-6"
               >
                 <p className="text-xs text-mist sm:text-sm">{row.label}</p>
+
                 <p className="flex items-start gap-2 text-xs text-dim sm:text-sm">
                   <Minus className="mt-0.5 hidden h-3.5 w-3.5 shrink-0 text-dim/70 sm:block" />
                   {row.cable}
                 </p>
+
                 <p className="flex items-start gap-2 text-xs font-medium text-ivory sm:text-sm">
                   <Check className="mt-0.5 hidden h-3.5 w-3.5 shrink-0 text-gold sm:block" />
                   {row.us}
