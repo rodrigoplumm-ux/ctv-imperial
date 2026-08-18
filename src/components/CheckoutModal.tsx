@@ -46,9 +46,14 @@ export function CheckoutModal() {
 
     const name = String(formData.get("name") ?? "").trim();
     const email = String(formData.get("email") ?? "").trim();
-    const phone = String(formData.get("phone") ?? "")
+
+    const phoneDigits = String(formData.get("phone") ?? "")
       .replace(/\D/g, "")
       .trim();
+
+    const phone = phoneDigits.startsWith("55")
+      ? `+${phoneDigits}`
+      : `+55${phoneDigits}`;
 
     const checkoutUrl = new URL(checkoutLinks[planId]);
 
