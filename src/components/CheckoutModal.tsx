@@ -1,23 +1,27 @@
-import { useEffect, useId, useRef, useState, type FormEvent } from "react";
+import { useEffect, useId, useRef, type FormEvent } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Check, X } from "lucide-react";
+import { X } from "lucide-react";
 import { formatBRL, getPlan, plans, type PlanId } from "../lib/plans";
 import { useCheckout } from "../lib/checkout";
 import { cn } from "../utils/cn";
 
+const checkoutLinks: Record<PlanId, string> = {
+  mensal:
+    "https://pay.kirvano.com/10812073-74d2-4001-8155-6a60dcff1cda",
+  trimestral:
+    "https://pay.kirvano.com/f2019a76-29d7-4ec2-be09-c975daaa4703",
+  anual:
+    "https://pay.kirvano.com/50f42ccb-7fcb-45e2-ac9e-d714a690e36c",
+};
+
 export function CheckoutModal() {
   const { isOpen, closeCheckout, planId, setPlanId } = useCheckout();
-  const [status, setStatus] = useState<"form" | "success">("form");
-  const [payment, setPayment] = useState<"pix" | "card">("pix");
   const titleId = useId();
   const dialogRef = useRef<HTMLDivElement>(null);
   const plan = getPlan(planId);
 
   useEffect(() => {
-    if (!isOpen) {
-      const timer = window.setTimeout(() => setStatus("form"), 250);
-      return () => window.clearTimeout(timer);
-    }
+    if (!isOpen) return;
 
     const previous = document.body.style.overflow;
     document.body.style.overflow = "hidden";
@@ -37,7 +41,22 @@ export function CheckoutModal() {
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setStatus("success");
+
+    const formData = new FormData(event.currentTarget);
+
+    const name = String(formData.get("name") ?? "").trim();
+    const email = String(formData.get("email") ?? "").trim();
+    const phone = String(formData.get("phone") ?? "")
+      .replace(/\D/g, "")
+      .trim();
+
+    const checkoutUrl = new URL(checkoutLinks[planId]);
+
+    checkoutUrl.searchParams.set("customer.name", name);
+    checkoutUrl.searchParams.set("customer.email", email);
+    checkoutUrl.searchParams.set("customer.phone", phone);
+
+    window.location.href = checkoutUrl.toString();
   };
 
   return (
@@ -79,135 +98,87 @@ export function CheckoutModal() {
               <X size={16} />
             </button>
 
-            {status === "form" ? (
-              <>
-                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
-                  Assinar CTV Imperial
-                </p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-gold">
+              Assinar CTV Imperial
+            </p>
 
-                <h2
-                  id={titleId}
-                  className="mt-2 font-display text-3xl text-ivory"
-                >
-                  Quase no seu sofá.
-                </h2>
+            <h2
+              id={titleId}
+              className="mt-2 font-display text-3xl text-ivory"
+            >
+              Quase no seu sofá.
+            </h2>
 
-                <p className="mt-2 text-sm text-mist">
-                  Escolha o plano e preencha seus dados para iniciar sua assinatura.
-                </p>
+            <p className="mt-2 text-sm text-mist">
+              Escolha o plano, preencha seus dados e continue para o pagamento
+              seguro.
+            </p>
 
-                <div className="mt-6 grid grid-cols-3 gap-2">
-                  {plans.map((item) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => setPlanId(item.id as PlanId)}
-                      className={cn(
-                        "rounded-2xl border px-2 py-3 text-center transition-colors",
-                        planId === item.id
-                          ? "border-gold bg-gold/10"
-                          : "border-white/10 hover:border-gold/30",
-                      )}
-                    >
-                      <span className="block text-[11px] text-mist">
-                        {item.name}
-                      </span>
-
-                      <span className="mt-1 block text-sm font-semibold text-ivory">
-                        {formatBRL(item.price)}
-                      </span>
-                    </button>
-                  ))}
-                </div>
-
-                <form className="mt-6 space-y-3" onSubmit={onSubmit}>
-                  <Field
-                    label="Nome completo"
-                    name="name"
-                    autoComplete="name"
-                    required
-                  />
-
-                  <Field
-                    label="E-mail"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                  />
-
-                  <Field
-                    label="WhatsApp"
-                    name="phone"
-                    type="tel"
-                    autoComplete="tel"
-                    placeholder="(11) 99999-0000"
-                    required
-                  />
-
-                  <fieldset className="pt-2">
-                    <legend className="mb-2 text-xs font-medium text-mist">
-                      Pagamento
-                    </legend>
-
-                    <div className="grid grid-cols-2 gap-2">
-                      <PaymentOption
-                        active={payment === "pix"}
-                        onClick={() => setPayment("pix")}
-                        title="PIX"
-                        hint="Confirmação rápida"
-                      />
-
-                      <PaymentOption
-                        active={payment === "card"}
-                        onClick={() => setPayment("card")}
-                        title="Cartão"
-                        hint="Cartão de crédito"
-                      />
-                    </div>
-                  </fieldset>
-
-                  <button
-                    type="submit"
-                    className="mt-3 w-full rounded-full bg-gradient-to-r from-gold-2 via-gold to-gold-3 py-3.5 text-sm font-semibold text-ink"
-                  >
-                    Confirmar {plan.name.toLowerCase()} · {formatBRL(plan.price)}
-                  </button>
-
-                  <p className="text-center text-[11px] text-dim">
-                    Sem fidelidade. Você pode cancelar quando quiser.
-                  </p>
-                </form>
-              </>
-            ) : (
-              <div className="py-6 text-center">
-                <div className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-gold/15 text-gold">
-                  <Check />
-                </div>
-
-                <h2
-                  id={titleId}
-                  className="mt-5 font-display text-3xl text-ivory"
-                >
-                  Pedido recebido.
-                </h2>
-
-                <p className="mx-auto mt-3 max-w-sm text-sm leading-relaxed text-mist">
-                  Recebemos sua solicitação do plano{" "}
-                  <strong className="text-ivory">{plan.name}</strong>. A
-                  ativação e as orientações de acesso são realizadas durante o
-                  horário de atendimento, todos os dias, das 7h às 22h.
-                </p>
-
+            <div className="mt-6 grid grid-cols-3 gap-2">
+              {plans.map((item) => (
                 <button
+                  key={item.id}
                   type="button"
-                  onClick={closeCheckout}
-                  className="mt-8 rounded-full bg-gradient-to-r from-gold-2 via-gold to-gold-3 px-6 py-3 text-sm font-semibold text-ink"
+                  onClick={() => setPlanId(item.id)}
+                  className={cn(
+                    "rounded-2xl border px-2 py-3 text-center transition-colors",
+                    planId === item.id
+                      ? "border-gold bg-gold/10"
+                      : "border-white/10 hover:border-gold/30",
+                  )}
                 >
-                  Voltar à página
+                  <span className="block text-[11px] text-mist">
+                    {item.name}
+                  </span>
+
+                  <span className="mt-1 block text-sm font-semibold text-ivory">
+                    {formatBRL(item.price)}
+                  </span>
                 </button>
-              </div>
-            )}
+              ))}
+            </div>
+
+            <form className="mt-6 space-y-3" onSubmit={onSubmit}>
+              <Field
+                label="Nome completo"
+                name="name"
+                autoComplete="name"
+                required
+              />
+
+              <Field
+                label="E-mail"
+                name="email"
+                type="email"
+                autoComplete="email"
+                required
+              />
+
+              <Field
+                label="WhatsApp"
+                name="phone"
+                type="tel"
+                autoComplete="tel"
+                placeholder="(24) 99999-9999"
+                required
+              />
+
+              <button
+                type="submit"
+                className="mt-3 w-full rounded-full bg-gradient-to-r from-gold-2 via-gold to-gold-3 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.01]"
+              >
+                Continuar para pagamento · {formatBRL(plan.price)}
+              </button>
+
+              <p className="text-center text-[11px] leading-relaxed text-dim">
+                Você será direcionado ao checkout seguro da Kirvano para escolher
+                a forma de pagamento e concluir sua compra.
+              </p>
+
+              <p className="text-center text-[11px] text-dim">
+                Sem fidelidade. Você pode deixar de renovar quando quiser.
+              </p>
+            </form>
           </motion.div>
         </motion.div>
       ) : null}
@@ -251,33 +222,5 @@ function Field({
         className="w-full rounded-xl border border-white/10 bg-ink px-3.5 py-3 text-sm text-ivory outline-none transition-colors placeholder:text-dim focus:border-gold/50"
       />
     </div>
-  );
-}
-
-function PaymentOption({
-  active,
-  onClick,
-  title,
-  hint,
-}: {
-  active: boolean;
-  onClick: () => void;
-  title: string;
-  hint: string;
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={cn(
-        "rounded-xl border px-3 py-3 text-left",
-        active
-          ? "border-gold bg-gold/10"
-          : "border-white/10 hover:border-gold/30",
-      )}
-    >
-      <span className="block text-sm font-semibold text-ivory">{title}</span>
-      <span className="block text-[11px] text-dim">{hint}</span>
-    </button>
   );
 }
