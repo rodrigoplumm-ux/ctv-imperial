@@ -4,28 +4,82 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#060606" />
+
     <meta
       name="description"
       content="CTV Imperial — canais ao vivo, filmes, séries e esportes em 4K. Sem fidelidade, ativação imediata. Planos a partir de R$ 11,90."
     />
-    <meta property="og:title" content="CTV Imperial — O império do entretenimento" />
+
+    <meta
+      property="og:title"
+      content="CTV Imperial — O império do entretenimento"
+    />
+
     <meta
       property="og:description"
       content="Canais, filmes, séries e esportes em um só lugar. Assine a partir de R$ 11,90."
     />
+
     <meta property="og:type" content="website" />
-    <title>CTV Imperial — Canais, filmes, séries e esportes em um só lugar</title>
+
+    <title>
+      CTV Imperial — Canais, filmes, séries e esportes em um só lugar
+    </title>
+
     <link
       rel="icon"
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='19' fill='%23060606' stroke='%23d4af37'/%3E%3Cpath d='M11 16.2 15.2 13.4 20 16.1 24.8 13.4 29 16.2 26.6 20.4H13.4Z' fill='%23d4af37'/%3E%3Crect x='12.6' y='21.6' width='14.8' height='9.2' rx='1.4' fill='none' stroke='%23d4af37'/%3E%3C/svg%3E"
     />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Manrope:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = true;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = true;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(
+        window,
+        document,
+        "script",
+        "https://connect.facebook.net/en_US/fbevents.js"
+      );
+
+      fbq("init", "1455455062620849");
+      fbq("track", "PageView");
+    </script>
+
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display:none"
+        src="https://www.facebook.com/tr?id=1455455062620849&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- End Meta Pixel Code -->
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
